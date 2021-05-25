@@ -35,59 +35,91 @@ body {
         margin: 0px;
         padding: 0px;
         animation-name: ball_movement;
-        animation-duration: 5s;
+        animation-duration: 6s;
         animation-iteration-count: infinite;        
         top: 25px;
-        left: 0px;
-        transform: skewY(0deg);
-        animation-timing-function: linear;            
+        left: 0px;                   
     }
 
 @keyframes ball_movement {
+    /* Skew para efecto de deformación por velocidad.
+    Scale para deformación al golpear.
+    Si quisiera que el movimiento de la pelota no afectara márgenes, modificar posicionamiento con transform: translate(); */
     0%, 100% { /* Baja */
         top: 25px;
-        left: 0px;
-        transform: skewY(10deg);
-        animation-timing-function: ease-in;            
+        left: -10px;
+        transform: skewY(5deg);
+        animation-timing-function: ease-in;
+        transform: scale(0.8,1.1);            
     }
-    15% { /* Sube */
-        top: 495px;
+    3%{
+        transform: scale(1,1);
+    }
+    12%{ /* Antes de golpe */
+        transform: scale(1,1);
+    }
+    15% { /* Sube, golpea */
+        top: 505px;
         left: 200px;
-        transform: skewY(10deg); 
-        animation-timing-function: ease-out;                  
+        transform: skewY(5deg); 
+        animation-timing-function: ease-out;
+        transform: scale(1.1,0.8);                  
+    }
+    18%{ /* Después de golpe */
+        transform: scale(1,1);
     }     
-    30% { /* Baja */
+    30% { /* Baja*/
         top: 25px;
         left: 375px;
-        transform: skewY(-10deg); 
+        transform: skewY(-5deg); 
         animation-timing-function: ease-in;                          
     }
-    45% { /* Baja */
-        top: 375px;
-        left: 495px;
-        transform: skewY(10deg);        
+    42%{ /* Antes de golpe */
+        transform: scale(1,1);
     }
-    50% { /* Sube */
-        top: 495px;
+    45% { /* Baja, golpea */
+        top: 375px;
+        left: 505px;
+        transform: skewY(5deg);
+        animation-timing-function: linear;
+        transform: scale(0.8,1.1);        
+    }    
+    50% { /* Sube. golpea */
+        top: 505px;
         left: 425px;
-        transform: skewY(-10deg);
-        animation-timing-function: ease-out;        
+        transform: skewY(-5deg);
+        animation-timing-function: ease-out;
+        transform: scale(1.1,0.8);         
+    }
+    53%{ /* Después de golpe */
+        transform: scale(1,1);
     }   
     70% { /* Baja */
         top: 25px;
         left: 350px;
-        transform: skewY(10deg);
+        transform: skewY(5deg);
         animation-timing-function: ease-in;
     }
-    85% { /* Sube */
-        top: 495px;
+    82%{ /* Antes de golpe */
+        transform: scale(1,1);
+    }
+    85% { /* Sube, golpe */
+        top: 505px;
         left: 200px;
-        transform: skewY(-10deg);
-        animation-timing-function: ease-out; 
+        transform: skewY(-5deg);
+        animation-timing-function: ease-out;
+        transform: scale(1.1,0.8);  
+    }
+    88%{ /* Después de golpe */
+        transform: scale(1,1);
+    }
+    97%{ /* Antes de golpe */
+        transform: scale(1,1);
     }
     /*100% { 
         top: 25px;
         left: 0px;
-        transform: skewY(15deg);
-    }   */      
+        transform: skewY(5deg);
+        transform: scale(0.8,1.1);
+    } */          
 }
